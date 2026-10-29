@@ -3479,6 +3479,32 @@ export async function renameProjectFile(
 }
 
 export async function openFolderDialog(options: { throwOnError?: boolean } = {}): Promise<string | null> {
+  // WRISE: the daemon runs headless on SG and is used from other machines' browsers, where the native
+  // dialog would open on SG's screen. Ask for a path on SG instead and check it exists there.
+  const typed = window.prompt('Folder on the SG machine (full path):', '/Users/wriseai/Projects/');
+  if (!typed || !typed.trim()) return null;
+  const path = typed.trim().replace(/\/+$/, '');
+  if (!(await dirExistsStrict(path))) {
+    window.alert(`No folder at ${path} on the SG machine.`);
+    return null;
+  }
+  return path;
+}
+
+async function dirExistsStrict(path: string): Promise<boolean> {
+  try {
+    const resp = await fetch('/api/dir-exists', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path }),
+    });
+    return resp.ok && (await resp.json()).exists === true;
+  } catch {
+    return false;
+  }
+}
+
+export async function openNativeFolderDialogOnServer(options: { throwOnError?: boolean } = {}): Promise<string | null> {
   try {
     const resp = await fetch('/api/dialog/open-folder', { method: 'POST' });
     if (!resp.ok) {
