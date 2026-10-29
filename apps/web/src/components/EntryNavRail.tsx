@@ -2633,6 +2633,15 @@ export function EntryNavRail({
             >
               <Icon name="settings" size={16} />
             </NavButton>
+            {/* WRISE: how-to guide, a static page served at /guide/. */}
+            <NavButton
+              ariaLabel="Guide"
+              label="Guide"
+              onClick={() => window.location.assign('/guide/')}
+              testId="entry-nav-guide"
+            >
+              <Icon name="help-circle" size={16} />
+            </NavButton>
             {/* 最近项目 sits under 设置 (per product) — the last thing in the
                 destination list, because it is a list of CONTENT rather than a
                 place to go. */}
@@ -2715,6 +2724,15 @@ export function EntryNavRail({
               testId="entry-settings-button"
             >
               <Icon name="settings" size={16} />
+            </NavButton>
+            {/* WRISE: how-to guide, a static page served at /guide/. */}
+            <NavButton
+              ariaLabel="Guide"
+              label="Guide"
+              onClick={() => window.location.assign('/guide/')}
+              testId="entry-nav-guide"
+            >
+              <Icon name="help-circle" size={16} />
             </NavButton>
             {/* 最近项目 under 设置, exactly as on the signed-in branch
                 (OPEND-3140). Without a cloud identity the catalog EntryShell

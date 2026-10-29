@@ -12,6 +12,7 @@
 1. Lock `CLAUDE_BIN` / `CLAUDE_CONFIG_DIR` out of Settings, so every Claude run goes through the SG egress shim.
 2. Hide the Open Design Cloud "Get free credits" card in the left rail.
 3. Choose a working folder by typing its path on the server. The daemon runs headless, so the native folder dialog would open on the server's screen, not in your browser.
+4. A how-to guide with short videos at `/guide/` (`apps/web/public/guide/`), opened from a "Guide" item in the left rail.
 
 ## Updating to a new upstream release (by hand)
 

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Design guide</title>
+<link rel="icon" href="/app-icon.svg">
+<style>
+@font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-VariableFont_wght.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "JiduMono Pro"; src: url("/fonts/JiduMonoPro-Regular.otf") format("opentype"); font-display: swap; }
+:root {
+  --bg: #fff; --bg-panel: #fafafa; --bg-subtle: #ededed;
+  --border: #dbdbdb; --border-soft: #ededed;
+  --text: #494949; --text-strong: #202020; --text-soft: #6b6b6b;
+  --sans: "Albert Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: "JiduMono Pro", ui-monospace, "SFMono-Regular", monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); }
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 80px; }
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-soft); text-decoration: none; font-size: 14px; }
+.back:hover { color: var(--text-strong); }
+h1 { color: var(--text-strong); font-size: 32px; line-height: 1.2; font-weight: 600; margin: 20px 0 8px; letter-spacing: -0.01em; }
+h2 { color: var(--text-strong); font-size: 21px; line-height: 1.3; font-weight: 600; margin: 48px 0 8px; scroll-margin-top: 16px; }
+p { margin: 0 0 12px; }
+.lede { font-size: 17px; }
+ol, ul { margin: 0 0 14px; padding-left: 22px; }
+li { margin: 4px 0; }
+nav.toc li { margin: 0 0 4px; break-inside: avoid; }
+a { color: var(--text-strong); }
+code, pre { font-family: var(--mono); font-size: 14px; }
+code { background: var(--bg-subtle); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+pre { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 10px; padding: 12px 14px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; padding: 0; }
+video { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 900; margin: 14px 0 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-panel); }
+nav.toc { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 12px; padding: 14px 18px; margin: 24px 0 8px; }
+nav.toc strong { display: block; color: var(--text-strong); font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+nav.toc ol { margin: 0; columns: 2; column-gap: 24px; font-size: 15px; }
+nav.toc a { color: var(--text); text-decoration: none; }
+nav.toc a:hover { color: var(--text-strong); text-decoration: underline; }
+.note { color: var(--text-soft); font-size: 14px; }
+@media (max-width: 560px) { h1 { font-size: 27px; } nav.toc ol { columns: 1; } }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">← Back to Open Design</a>
+<h1>Open Design: how to use it</h1>
+<p class="lede">Open Design is our own design workspace. You describe what you want, and Claude Code on the SG machine builds it as a web page, a prototype or a short film. You watch the result appear in a preview and keep changing it by chat.</p>
+
+<nav class="toc" aria-label="Contents">
+<strong>Contents</strong>
+<ol>
+<li><a href="#sign-in">Sign in</a></li>
+<li><a href="#start">Start a design</a></li>
+<li><a href="#design-systems">Design systems</a></li>
+<li><a href="#skills">Skills and @</a></li>
+<li><a href="#folder">Working folder</a></li>
+<li><a href="#project">Project view and export</a></li>
+<li><a href="#motion">Motion to MP4</a></li>
+<li><a href="#community">Community templates</a></li>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#claude-code">From Claude Code</a></li>
+<li><a href="#limits">What doesn't work yet</a></li>
+</ol>
+</nav>
+
+<h2 id="sign-in">1. Sign in</h2>
+<ol>
+<li>Open <a href="https://design.yitwah.site">design.yitwah.site</a>.</li>
+<li>Enter your email. Cloudflare sends you a one-time code.</li>
+<li>Type the code. Open Design opens.</li>
+</ol>
+<p>On a device in our tailnet you can also use <code>https://wri-sg-pc-007.tailc544c9.ts.net:8443</code>, which needs no email code.</p>
+
+<h2 id="start">2. Start a design</h2>
+<p>You start from the prompt box on Home.</p>
+<ol>
+<li>Write what you want in a sentence or two.</li>
+<li>Pick a type: Prototype, Motion design, Slide deck, or one under More. Each type shows example briefs you can use.</li>
+<li>Click the palette button to pick a design system (see below).</li>
+<li>Press the arrow to send. The agent starts work and opens the project.</li>
+</ol>
+<video controls muted playsinline preload="metadata" src="videos/start-design.mp4"></video>
+<p class="note">The demo stops before sending.</p>
+
+<h2 id="design-systems">3. Design systems</h2>
+<p>A design system sets the colours, type and rules the agent follows. There are 152 presets, and our own one is <strong>WRISE AI OS</strong>.</p>
+<ul>
+<li>Left rail → <strong>Design systems</strong> to browse them. Click one to see its palette and type.</li>
+<li><strong>Your systems</strong> holds WRISE AI OS. <strong>Official presets</strong> holds the 152 others, with search.</li>
+<li><strong>Create</strong> makes a new one from a DESIGN.md, a website or a brand.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/design-systems.mp4"></video>
+
+<h2 id="skills">4. Skills and @</h2>
+<p>Skills are instructions the agent can follow for a kind of work, such as a magazine layout or a pitch deck. There are 255 of them.</p>
+<ul>
+<li>Left rail → <strong>Plugins</strong> → <strong>Skills</strong> lists them, with search and categories.</li>
+<li>To use one, type <code>@</code> in the prompt box and pick it from the list.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/plugins-skills.mp4"></video>
+
+<h2 id="folder">5. Working folder</h2>
+<p>The working folder lets the agent read your own files, for example notes or a brand guide, while it designs.</p>
+<ol>
+<li>Under the prompt box, click <strong>Working directory</strong> → <strong>Choose folder</strong>.</li>
+<li>Type a folder path on the SG machine, for example <code>/Users/wriseai/Projects/wrise-docs</code>, and press OK.</li>
+</ol>
+<video controls muted playsinline preload="metadata" src="videos/working-folder.mp4"></video>
+
+<h2 id="project">6. Project view and export</h2>
+<p>A project has the chat on the left and the live preview on the right.</p>
+<ul>
+<li><strong>Desktop</strong> menu: switch the preview to Tablet or Mobile.</li>
+<li><strong>Design Files</strong> tab: every page, script and image in the project.</li>
+<li><strong>Export</strong>: PDF, image, .zip, or one standalone HTML file.</li>
+<li>The comment button lets you pin notes on the preview.</li>
+<li>To change something, write it in the chat box and send.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/project-view.mp4"></video>
+
+<h2 id="motion">7. Motion to MP4</h2>
+<p>Pick <strong>Motion design</strong> on Home. The agent builds the animation and renders it to <code>film.mp4</code> in the project.</p>
+<ul>
+<li>Open the MP4 card in the chat to watch it, or download it.</li>
+<li>The animation source stays in the project, so you can ask for changes and render again.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/motion-film.mp4"></video>
+
+<h2 id="community">8. Community templates</h2>
+<p>Left rail → <strong>Community</strong> shows finished templates by type. Hover a card for two buttons:</p>
+<ul>
+<li><strong>Remix</strong> copies the template into a new project, with its prompt waiting in the chat box. Edit it, then send.</li>
+<li><strong>Try it now</strong> puts the template's prompt into the Home box.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/community.mp4"></video>
+
+<h2 id="memory">9. Memory</h2>
+<ul>
+<li>Every project keeps its full chat history. It stays even if Claude Code sessions on SG are cleaned up.</li>
+<li>Learning from chats is on, so a preference you state in one project carries into new chats. You can see and edit what was saved in Settings → Memory.</li>
+<li>To reuse another project's style, either turn it into a design system (Design systems → Create), or set that project's folder as the working folder.</li>
+</ul>
+
+<h2 id="settings">10. Settings</h2>
+<ul>
+<li><strong>Models &amp; providers → Local CLI</strong>: shows Claude Code, the agent that does the work.</li>
+<li><strong>Memory</strong>: saved facts and preferences, with an on/off switch.</li>
+<li><strong>Media providers</strong>: image, video and audio generation. These need API keys (not set yet).</li>
+<li><strong>OpenDesign MCP</strong>: how Claude Code connects to Open Design.</li>
+</ul>
+<video controls muted playsinline preload="metadata" src="videos/settings.mp4"></video>
+
+<h2 id="claude-code">11. From Claude Code on SG</h2>
+<p>Any Claude Code session on the SG machine can use Open Design through its tools: <code>create_project</code>, <code>start_run</code>, <code>get_run</code> and <code>list_files</code>. Run <code>claude</code> in any folder and ask in plain words:</p>
+<pre><code>cd ~/Projects/wrise-docs
+claude
+&gt; Use open-design to make a one-page landing for a kopi shop, then list the files.</code></pre>
+<p>The new project shows up in Open Design like any other, so you can open it in the browser and keep going there.</p>
+<video controls muted playsinline preload="metadata" src="videos/claude-code.mp4"></video>
+<p class="note">This clip is a mock-up of such a session.</p>
+
+<h2 id="limits">12. What doesn't work yet</h2>
+<ul>
+<li>Image and audio generation need API keys in Settings → Media providers. None are set yet.</li>
+<li>Share links need an Open Design Cloud sign-in, which is not set up. Use Export instead.</li>
+<li>Claude Code is the only agent. The other CLIs listed in Settings are not installed.</li>
+</ul>
+</main>
+</body>
+</html>
